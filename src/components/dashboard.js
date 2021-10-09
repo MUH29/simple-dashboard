@@ -132,85 +132,85 @@ export default function Dashboard() {
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const theme = React.useMemo(
-     () =>
-       createMuiTheme({
-         palette: {
-           type: prefersDarkMode ? 'dark' : 'light',
-         },
-       }),
-     [prefersDarkMode],
-   );
+    () =>
+      createMuiTheme({
+        palette: {
+          type: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode],
+  );
   return (
 
     <ThemeProvider theme={theme}>
-    <div className={classes.root}>
-      <CssBaseline />
+      <div className={classes.root}>
+        <CssBaseline />
 
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Overview
-          </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+        <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+          <Toolbar className={classes.toolbar}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+              Overview
+            </Typography>
+            <IconButton color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
 
-      <Drawer
-        variant="permanent"
-        classes={{paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),}}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
+        <Drawer
+          variant="permanent"
+          classes={{ paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose), }}
+          open={open}
+        >
+          <div className={classes.toolbarIcon}>
+            <IconButton onClick={handleDrawerClose}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
+          <List>{mainListItems}</List>
+          <Divider />
+          <List>{secondaryListItems}</List>
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.appBarSpacer} />
+          <Container maxWidth="lg" className={classes.container}>
+            <Grid container spacing={3}>
 
 
-          {/* Recent Deposits */}
-          <Deposits />
+              {/* Recent Deposits */}
+              <Deposits />
 
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={6}>
-              <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
+              {/* Chart */}
+              <Grid item xs={12} md={8} lg={6}>
+                <Paper className={fixedHeightPaper}>
+                  <Chart />
+                </Paper>
+              </Grid>
+
+
+              {/* New Orders */}
+              <Grid item xs={12} md={4} lg={6}>
+                <Paper className={classes.paper}>
+                  <Orders />
+                </Paper>
+              </Grid>
             </Grid>
-
-
-            {/* New Orders */}
-            <Grid item xs={12} md={4} lg={6}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
-          </Grid>
-        </Container>
-        <Copyright />
-      </main>
-    </div>
+          </Container>
+          <Copyright />
+        </main>
+      </div>
     </ThemeProvider>
 
   );
