@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles (theme => ({
+const useStyles = makeStyles(theme => ({
   title: {
     color: '#444545',
     textAlign: 'center',
